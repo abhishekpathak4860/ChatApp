@@ -1,0 +1,13 @@
+@import "tailwindcss";
+/* @plugin "daisyui"; */
+
+body{
+    background-color: white;
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* prevent entire page from scrolling */
+}
