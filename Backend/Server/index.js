@@ -5,7 +5,6 @@ import authRouter from "./Route/AuthUser.js";
 import messageroute from "./Route/MessageRoute.js";
 import cookieParser from "cookie-parser";
 import userRouter from "./Route/userRoute.js";
-
 import { app, server } from "./Socket/socket.js";
 import path from "path";
 
@@ -17,17 +16,22 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 
+// Define API routes first
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageroute);
 app.use("/api/user", userRouter);
 
-app.use(express.static(path.join(__dirname, "Frontend/Client/dist")));
+// Serve static files from the Frontend dist folder
+app.use(express.static(path.join(__dirname, "Frontend", "Client", "dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "Frontend/Client/dist/index.html"));
+// The wildcard route should come last
+app.get("i", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "Frontend", "Client", "dist", "index.html")
+  );
 });
 
 server.listen(PORT, () => {
   dbConnect();
-  console.log("server started");
+  console.log("server started on port " + PORT);
 });
