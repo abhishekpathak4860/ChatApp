@@ -131,7 +131,10 @@ export default function MessageContainer({ onBackUser }) {
               </div>
             )}
             {!loading && messages?.length === 0 && (
-              <p className="text-center text-black items-center">
+              <p
+                className={`text-center  font-bold items-center `}
+                style={{ backgroundColor: "rgb(53, 45, 94);" }}
+              >
                 Hi! I'm Niveshak, how can I help you?
               </p>
             )}
