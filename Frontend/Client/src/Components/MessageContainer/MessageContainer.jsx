@@ -154,14 +154,21 @@ export default function MessageContainer({ onBackUser }) {
                     >
                       <div className="flex flex-col items-start">
                         <div
-                          className={`max-w-[100%] px-4 py-2 rounded-lg text-white ${
+                          className={`px-4 py-2 rounded-lg text-white whitespace-pre-line break-words ${
                             isSender
                               ? "bg-blue-500 self-end"
-                              : "bg-gray-300 text-black"
+                              : "bg-gray-300 text-black self-start"
                           }`}
+                          style={{
+                            maxWidth: "100%",
+                            minWidth: "auto",
+                            width: "fit-content",
+                            wordBreak: "break-word",
+                          }}
                         >
                           {message?.message}
                         </div>
+
                         <div
                           className={`text-[10px] opacity-70 mt-1  text-black ${
                             isSender ? "text-right" : "text-left"
