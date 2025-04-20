@@ -132,7 +132,7 @@ export default function MessageContainer({ onBackUser }) {
             )}
             {!loading && messages?.length === 0 && (
               <p className="text-center text-black items-center">
-                Send a message to start Conversation
+                Hi! I'm Niveshak, how can I help you?
               </p>
             )}
             {!loading &&
@@ -193,6 +193,7 @@ export default function MessageContainer({ onBackUser }) {
                 required
                 id="message"
                 type="text"
+                placeholder="Type your message..."
                 className="w-full bg-transparent outline-none px-4 rounded-full"
               />
               <button type="submit">
