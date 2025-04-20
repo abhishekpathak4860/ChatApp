@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Backend/Server/index.js",
+    "start": "node Backend/Server/index.js",
     "build": "npm install && npm install  --prefix Frontend/Client && npm run build --prefix Frontend/Client"
   },
   "keywords": [],
