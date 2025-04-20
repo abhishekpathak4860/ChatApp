@@ -24,7 +24,7 @@ export default function Sidebar({ onSelectUser }) {
   const nowOnline = chatUser.map((user) => user._id);
 
   // chats function
-  const isOnline = nowOnline.map((userId) => onlineUser.includes(userId));
+  // const isOnline = nowOnline.map((userId) => onlineUser.includes(userId));
 
   // show user with whom you chatted
   useEffect(() => {
