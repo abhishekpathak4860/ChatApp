@@ -25,12 +25,11 @@ app.use("/api/user", userRouter);
 app.use(express.static(path.join(__dirname, "Frontend", "Client", "dist")));
 
 // The wildcard route should come last
-app.get("i", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(
     path.join(__dirname, "Frontend", "Client", "dist", "index.html")
   );
 });
-
 server.listen(PORT, () => {
   dbConnect();
   console.log("server started on port " + PORT);
