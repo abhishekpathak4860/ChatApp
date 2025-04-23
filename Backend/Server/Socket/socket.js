@@ -44,7 +44,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["http://192.168.216.188:5173", "http://localhost:5173"], // vercel link
+    origin: ["https://chatapp-m947.onrender.com/"], // vercel link
     methods: ["GET", "POST"],
     credentials: true,
   },

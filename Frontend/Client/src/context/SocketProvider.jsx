@@ -9,7 +9,7 @@ export const useVideoSocket = () => {
 };
 
 export const VideoSocketProvider = ({ children }) => {
-  const socket = useMemo(() => io("http://localhost:5000/"), []);
+  const socket = useMemo(() => io("https://chatapp-m947.onrender.com/"), []); // server link
 
   return (
     <VideoSocketContext.Provider value={socket}>
