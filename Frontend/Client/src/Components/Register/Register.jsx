@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useAuth } from "../Context/AuthContext";
+import API from "../axiosConfig";
 
 export default function Register() {
   const { setAuthUser } = useAuth();
@@ -28,7 +28,7 @@ export default function Register() {
 
     try {
       const { confirmPassword, ...dataToSend } = registerData; // removes confirmPassword from part
-      const res = await axios.post("/api/auth/register", dataToSend);
+      const res = await API.post("/api/auth/register", dataToSend);
       const data = res.data;
 
       if (data.success === false) {

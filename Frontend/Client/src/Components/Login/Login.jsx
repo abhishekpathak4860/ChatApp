@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
+import API from "../axiosConfig";
 
 export default function Login() {
   const { setAuthUser } = useAuth();
@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const login = await axios.post("/api/auth/login", loginData);
+      const login = await API.post("/api/auth/login", loginData);
       const data = login.data;
       if (data.success === false) {
         setLoading(false);

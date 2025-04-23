@@ -3,7 +3,7 @@ import { useAuth } from "../Context/AuthContext";
 import { TiMessages } from "react-icons/ti";
 import { IoArrowBackSharp, IoSend } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import API from "../axiosConfig";
 import { useSocketContext } from "../Context/SocketContext";
 import notify from "../../assets/sound/notification.mp3";
 
@@ -41,7 +41,7 @@ export default function MessageContainer({ onBackUser }) {
     const getMessages = async () => {
       setLoading(true);
       try {
-        const getmessage = await axios.get(
+        const getmessage = await API.get(
           `/api/message/${selectedConversation?._id}`,
           { withCredentials: true }
         );
@@ -68,7 +68,7 @@ export default function MessageContainer({ onBackUser }) {
     e.preventDefault();
     setSending(true);
     try {
-      const res = await axios.post(
+      const res = await API.post(
         `/api/message/send/${selectedConversation?._id}`,
         { message: sendData }
       );
