@@ -14,9 +14,9 @@ const LobbyScreen = () => {
   const handleSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
-      // if (authUser.email != email) {
-      //   return alert("email not match");
-      // }
+      if (authUser.email != email) {
+        return alert("Oops email did not match");
+      }
       socket.emit("room:join", { email, room });
     },
     [email, room, socket]
