@@ -9,6 +9,9 @@ import { AuthContextProvider } from "./Components/Context/AuthContext.jsx";
 import { VerifyUser } from "./Components/Utils/VerifyUser.jsx";
 import Chat from "./Components/ChatPage/Chat.jsx";
 import { SocketContextProvider } from "./Components/Context/SocketContext.jsx";
+import LobbyScreen from "./screens/Lobby.jsx";
+import RoomPage from "./screens/Room.jsx";
+import { VideoSocketProvider } from "./context/SocketProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,14 +36,40 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/video",
+    element: <VerifyUser />,
+    children: [
+      {
+        path: "/video",
+        element: <LobbyScreen />,
+      },
+    ],
+  },
+  {
+    path: "/room/:roomId",
+    element: <VerifyUser />,
+    children: [
+      {
+        path: "/room/:roomId",
+        element: <RoomPage />,
+      },
+    ],
+  },
 ]);
 
 const root = createRoot(document.getElementById("root"));
 root.render(
   <AuthContextProvider>
     <SocketContextProvider>
-      <RouterProvider router={router} />
-      <ToastContainer />
+      {" "}
+      {/* Chat Socket */}
+      <VideoSocketProvider>
+        {" "}
+        {/* Video Socket */}
+        <RouterProvider router={router} />
+        <ToastContainer />
+      </VideoSocketProvider>
     </SocketContextProvider>
   </AuthContextProvider>
 );

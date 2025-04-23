@@ -42,7 +42,8 @@ export default function MessageContainer({ onBackUser }) {
       setLoading(true);
       try {
         const getmessage = await axios.get(
-          `/api/message/${selectedConversation?._id}`
+          `/api/message/${selectedConversation?._id}`,
+          { withCredentials: true }
         );
         const data = await getmessage.data;
         if (data.success === false) {

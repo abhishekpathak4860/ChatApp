@@ -19,19 +19,15 @@ export default function Sidebar({ onSelectUser }) {
   const [chatUser, setChatUser] = useState([]);
   const { messages, selectedConversation, setSelectedConversation } =
     userConversation();
-  const { onlineUser, socket } = useSocketContext();
-
-  const nowOnline = chatUser.map((user) => user._id);
-
-  // chats function
-  // const isOnline = nowOnline.map((userId) => onlineUser.includes(userId));
 
   // show user with whom you chatted
   useEffect(() => {
     const chatUserHandler = async () => {
       setLoading(true);
       try {
-        const chatters = await axios.get("/api/user/currentusers");
+        const chatters = await axios.get("/api/user/currentusers", {
+          withCredentials: true,
+        });
         const data = chatters.data;
         if (data.success === false) {
           console.log(data.message);
@@ -51,7 +47,9 @@ export default function Sidebar({ onSelectUser }) {
     e.preventDefault();
     setLoading(true);
     try {
-      const search = await axios.get(`/api/user/search?search=${searchInput}`);
+      const search = await axios.get(`/api/user/search?search=${searchInput}`, {
+        withCredentials: true,
+      });
       const data = search.data;
       if (data.success === false) {
         console.log(data.message);
@@ -88,13 +86,13 @@ export default function Sidebar({ onSelectUser }) {
         if (data.success === false) {
           console.log(data.message);
         }
-        toast.info(data.message);
+        toast.info(data.message, { autoClose: 1000 });
         localStorage.removeItem("chatapp");
         setAuthUser(null);
         setLoading(false);
         setTimeout(() => {
           navigate("/");
-        }, 6000);
+        }, 1000);
       } catch (error) {
         setLoading(false);
         console.log(error);

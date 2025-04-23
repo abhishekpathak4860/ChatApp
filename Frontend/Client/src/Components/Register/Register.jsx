@@ -35,17 +35,19 @@ export default function Register() {
         setLoading(false);
       }
 
-      toast.success(data.message);
+      toast.success(data.message, { autoClose: 1000 });
       localStorage.setItem("chatapp", JSON.stringify(data));
       setAuthUser(data);
       setLoading(false);
 
       setTimeout(() => {
         navigate("/login");
-      }, 6000);
+      }, 1000);
     } catch (error) {
       setLoading(false);
-      toast.error(error?.response?.data?.message || "Registration failed.");
+      toast.error(error?.response?.data?.message || "Registration failed.", {
+        autoClose: 1000,
+      });
     }
   };
 

@@ -23,17 +23,19 @@ export default function Login() {
       if (data.success === false) {
         setLoading(false);
       }
-      toast.success(data.message);
+      toast.success(data.message, { autoClose: 1000 });
       localStorage.setItem("chatapp", JSON.stringify(data));
       setAuthUser(data);
       setLoading(false);
 
+      console.log(data);
+
       setTimeout(() => {
         navigate("/chat");
-      }, 6000);
+      }, 1000);
     } catch (error) {
       setLoading(false);
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message, { autoClose: 1000 });
     }
   };
 

@@ -15,7 +15,8 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("http://192.168.216.188:5000", {
+        // server link
         query: { userId: authUser?.id },
       });
 
