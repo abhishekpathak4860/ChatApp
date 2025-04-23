@@ -6,12 +6,20 @@ import messageRouter from "./Route/MessageRoute.js";
 import userRouter from "./Route/userRoute.js";
 import cookieParser from "cookie-parser";
 import path from "path";
-import { app, server } from "./Socket/socket.js"; // common socket file
+import cors from "cors";
+import { app, server } from "./Socket/socket.js";
 
 dotenv.config();
 const __dirname = path.resolve();
 const PORT = process.env.PORT || 5000;
 
+const corsOptions = {
+  origin: "https://chat-app-p6vk.vercel.app",
+  methods: ["GET", "POST"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
