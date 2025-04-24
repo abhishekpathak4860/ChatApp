@@ -46,6 +46,7 @@ export default function MessageContainer({ onBackUser }) {
           { withCredentials: true }
         );
         const data = await getmessage.data;
+        console.log(data);
         if (data.success === false) {
           setLoading(false);
           console.log(data.message);
@@ -70,7 +71,9 @@ export default function MessageContainer({ onBackUser }) {
     try {
       const res = await API.post(
         `/api/message/send/${selectedConversation?._id}`,
-        { message: sendData }
+        {
+          message: sendData,
+        }
       );
       const data = await res.data;
 
@@ -144,6 +147,7 @@ export default function MessageContainer({ onBackUser }) {
               messages?.map((message, index) => {
                 const isSender =
                   String(message.senderId) === String(authUser.id);
+
                 return (
                   <div
                     className="text-white"
@@ -170,13 +174,14 @@ export default function MessageContainer({ onBackUser }) {
                             wordBreak: "break-word",
                           }}
                         >
+                          {" "}
                           {message?.message}
                         </div>
 
                         <div
-                          className={`text-[10px] opacity-70 mt-1  text-black ${
-                            isSender ? "text-right" : "text-left"
-                          }`}
+                          className="text-[10px] opacity-70 mt-1  text-black ${
+                         
+                          "
                         >
                           {new Date(message?.createdAt).toLocaleTimeString(
                             "en-IN",

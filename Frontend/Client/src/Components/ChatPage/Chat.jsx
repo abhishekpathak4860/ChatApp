@@ -21,8 +21,12 @@ export default function Chat() {
     <>
       <div
         className="flex justify-between min-w-full md:min-w-[550px] md:max-w-[65%]
-      px-2 h-[95%] md:h-full rounded-xl shadow-lg bg-gray-400 bg-clip-padding
+      px-2 h-full md:h-full rounded-xl shadow-lg  bg-clip-padding
       backdrop-filter backdrop-blur-lg bg-opacity-0"
+        style={{
+          background:
+            "linear-gradient(45deg, #262140 25%, #2621400d), linear-gradient(to bottom, #2621400d, #262140b3)",
+        }}
       >
         <div
           className={`w-full py-2 ${
@@ -44,7 +48,7 @@ export default function Chat() {
           <MessageContainer onBackUser={handleShowSidebar} />
         </div>
       </div>
-      <Link to={"/video"}>Video</Link>
+      {/* <Link to={"/video"}>Video</Link> */}
     </>
   );
 }

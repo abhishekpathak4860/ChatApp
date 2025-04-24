@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import { IoArrowBackSharp } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
@@ -102,7 +102,7 @@ export default function Sidebar({ onSelectUser }) {
     }
   };
   return (
-    <div className="h-full w-auto px-1">
+    <div className=" w-auto px-1">
       <div className="flex justify-between gap-2">
         <form
           onSubmit={handleUserSearch}
@@ -140,7 +140,7 @@ export default function Sidebar({ onSelectUser }) {
                 }`}
               >
                 <img
-                  src={user.profilepic || "https://via.placeholder.com/40"}
+                  src={user.profilepic}
                   alt="profile"
                   className="h-10 w-10 rounded-full object-cover"
                 />
@@ -183,7 +183,9 @@ export default function Sidebar({ onSelectUser }) {
                           alt="profile"
                           className="h-10 w-10 rounded-full object-cover"
                         />
-                        <span className="font-medium">{user.username}</span>
+                        <span className="font-medium text-white">
+                          {user.username}
+                        </span>
                       </div>
                       <hr className="border-gray-300" />
                     </div>
@@ -192,17 +194,57 @@ export default function Sidebar({ onSelectUser }) {
               )}
             </div>
           </div>
-          <div className="mt-auto px-1 py-1 flex">
-            <button
-              onClick={handelLogOut}
-              className="hover:bg-red-600  w-10 cursor-pointer hover:text-white rounded-lg"
-            >
-              <BiLogOut size={25} />
-            </button>
-            <p className="text-sm py-1">Logout</p>
-          </div>
         </>
       )}
+      <div className="absolute bottom-4 left-1 flex flex-col items-center space-y-3 z-50">
+        {/* Video Call Button */}
+        <Link
+          to="/video"
+          className="rounded-full shadow-lg hover:scale-110 transition-transform duration-300 ease-in-out flex items-center justify-center"
+          style={{
+            backgroundColor: "rgb(224, 143, 134)",
+            width: "64px",
+            height: "64px",
+          }}
+          title="Start a Video Call"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h8a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z"
+            />
+          </svg>
+        </Link>
+
+        {/* Video Call Text */}
+        <p className="text-xs text-center text-[#e08f86] font-semibold max-w-[150px] leading-tight">
+          Get connected with our best advisor directly on video call
+        </p>
+
+        {/* Logout Button */}
+        <div className="flex items-center space-x-2 mt-2">
+          <button
+            onClick={handelLogOut}
+            className="hover:bg-red-600 p-2 rounded-full hover:text-white transition-colors"
+          >
+            <BiLogOut size={24} style={{ color: "rgb(245, 101, 101)" }} />
+          </button>
+          <p
+            className="text-sm font-medium"
+            style={{ color: "rgb(245, 101, 101)" }}
+          >
+            Logout
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

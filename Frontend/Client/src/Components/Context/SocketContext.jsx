@@ -19,7 +19,6 @@ export const SocketContextProvider = ({ children }) => {
         // server link
         query: { userId: authUser?.id },
       });
-
       socket.on("getOnlineUsers", (users) => {
         setOnlineUser(users);
       });

@@ -17,9 +17,9 @@ const LobbyScreen = () => {
       if (authUser.email != email) {
         return alert("Oops email did not match");
       }
-      socket.emit("room:join", { email, room });
+      socket.emit("room:join", { email, room, username: authUser.username });
     },
-    [email, room, socket]
+    [email, room, socket, authUser]
   );
 
   const handleJoinRoom = useCallback(
@@ -45,7 +45,7 @@ const LobbyScreen = () => {
       }}
     >
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center text-indigo-700 mb-6">
+        <h1 className="text-3xl font-bold text-center text-[rgba(246,179,172,0.74)] mb-6">
           Join a Video Room
         </h1>
         <form onSubmit={handleSubmitForm} className="space-y-5">
