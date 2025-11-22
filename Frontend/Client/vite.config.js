@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://chatapp-m947.onrender.com/", // backend url
+        target: "https://chat-backend-in0f.onrender.com/", // backend url
         secure: false,
       },
     },
