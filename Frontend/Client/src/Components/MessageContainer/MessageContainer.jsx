@@ -42,7 +42,7 @@ export default function MessageContainer({ onBackUser }) {
       setLoading(true);
       try {
         const getmessage = await API.get(
-          `/message/${selectedConversation?._id}`,
+          `/api/message/${selectedConversation?._id}`,
           { withCredentials: true }
         );
         const data = await getmessage.data;
@@ -69,9 +69,12 @@ export default function MessageContainer({ onBackUser }) {
     e.preventDefault();
     setSending(true);
     try {
-      const res = await API.post(`/message/send/${selectedConversation?._id}`, {
-        message: sendData,
-      });
+      const res = await API.post(
+        `/api/message/send/${selectedConversation?._id}`,
+        {
+          message: sendData,
+        }
+      );
       const data = await res.data;
 
       if (data.success === false) {

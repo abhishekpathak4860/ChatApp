@@ -28,7 +28,7 @@ export default function Register() {
 
     try {
       const { confirmPassword, ...dataToSend } = registerData;
-      const res = await API.post("/auth/register", dataToSend);
+      const res = await API.post("/api/auth/register", dataToSend);
       const data = res.data;
 
       if (data.success === false) {

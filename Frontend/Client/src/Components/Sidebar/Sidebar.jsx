@@ -25,7 +25,7 @@ export default function Sidebar({ onSelectUser }) {
     const chatUserHandler = async () => {
       setLoading(true);
       try {
-        const chatters = await API.get("/user/currentusers", {
+        const chatters = await API.get("/api/user/currentusers", {
           withCredentials: true,
         });
         const data = chatters.data;
@@ -47,7 +47,7 @@ export default function Sidebar({ onSelectUser }) {
     e.preventDefault();
     setLoading(true);
     try {
-      const search = await API.get(`/user/search?search=${searchInput}`, {
+      const search = await API.get(`/api/user/search?search=${searchInput}`, {
         withCredentials: true,
       });
       const data = search.data;
@@ -81,7 +81,7 @@ export default function Sidebar({ onSelectUser }) {
     const confirmLogout = window.prompt("Type 'UserName' To Logout");
     if (confirmLogout === authUser.username) {
       try {
-        const logout = await API.post("/auth/logout");
+        const logout = await API.post("/api/auth/logout");
         const data = logout.data;
         if (data.success === false) {
           console.log(data.message);
