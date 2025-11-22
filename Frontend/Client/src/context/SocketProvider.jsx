@@ -9,8 +9,8 @@ export const useVideoSocket = () => {
 };
 
 export const VideoSocketProvider = ({ children }) => {
-  const socket = useMemo(() => io("https://chatapp-m947.onrender.com/"), []); // server link
-
+  // const socket = useMemo(() => io("https://chat-backend-in0f.onrender.com/"), []); // server link
+  const socket = useMemo(() => io(import.meta.env.VITE_SOCKET_URL), []);
   return (
     <VideoSocketContext.Provider value={socket}>
       {children}

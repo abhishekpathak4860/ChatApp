@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const login = await API.post("/api/auth/login", loginData);
+      const login = await API.post("/auth/login", loginData);
       const data = login.data;
       if (data.success === false) {
         setLoading(false);
