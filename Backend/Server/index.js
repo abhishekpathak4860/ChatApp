@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000;
 const corsOptions = {
   origin: [
     "http://localhost:5173", // development
-    "https://chat-app-p6vk.vercel.app", // production
+    "https://chat-app-pzif.vercel.app", // production
   ],
   methods: ["GET", "POST"],
   credentials: true,
